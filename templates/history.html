@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bill History</title>
+</head>
+<body>
+
+<h1>Bill History</h1>
+
+{% if bills|length == 0 %}
+    <p>No bills found.</p>
+{% endif %}
+
+{% for bill in bills %}
+    <h3>
+        Bill ID: {{ bill["id"] }} |
+        Customer: {{ bill["customer_name"] }} |
+        Total: ₹{{ bill["total"] }}
+    </h3>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+
+        {% for item in bill["items"] %}
+        <tr>
+            <td>{{ item["item"] }}</td>
+            <td>{{ item["quantity"] }}</td>
+            <td>{{ item["price"] }}</td>
+            <td>{{ item["subtotal"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br><br>
+{% endfor %}
+
+<a href="/">Back to Home</a>
+
+</body>
+</html>

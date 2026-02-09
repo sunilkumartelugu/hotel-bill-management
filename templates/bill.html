@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bill Generated</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Bill Generated</h1>
+    <h3>Total Amount: ₹ {{ total }}</h3>
+
+    <a href="/">Create New Bill</a>
+    <a href="/history">View Bill History</a>
+</div>
+
+</body>
+</html>

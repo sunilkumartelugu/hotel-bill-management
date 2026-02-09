@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Bill Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Hotel Bill Management</h1>
+
+    <form action="/bill" method="post">
+
+        <input type="text" name="customer_name" placeholder="Customer Name" required>
+
+        <h3>Items</h3>
+
+        <div id="items">
+            <div class="item-row">
+                <input type="text" name="item[]" placeholder="Item Name" required>
+                <input type="number" name="quantity[]" placeholder="Quantity" required>
+                <input type="number" name="price[]" placeholder="Price" required>
+            </div>
+        </div>
+
+        <button type="button" class="add-btn" onclick="addItem()">Add Another Item</button>
+
+        <button type="submit" class="submit-btn">Generate Bill</button>
+    </form>
+
+    <a href="/history">View Bill History</a>
+
+</div>
+
+<script>
+function addItem() {
+    const div = document.createElement("div");
+    div.className = "item-row";
+    div.innerHTML = `
+        <input type="text" name="item[]" placeholder="Item Name" required>
+        <input type="number" name="quantity[]" placeholder="Quantity" required>
+        <input type="number" name="price[]" placeholder="Price" required>
+    `;
+    document.getElementById("items").appendChild(div);
+}
+</script>
+
+</body>
+</html>
